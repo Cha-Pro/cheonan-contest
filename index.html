@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>2026 천안시 데이터 분석 아이디어 경진대회</title>
+<meta name="description" content="데이터로 천안의 내일을 바꾸는 아이디어를 찾습니다. 2026 천안시 데이터 분석 아이디어 경진대회에 도전하세요! 총 상금 1,200만원." />
+<meta property="og:title" content="2026 천안시 데이터 분석 아이디어 경진대회" />
+<meta property="og:description" content="데이터로 천안의 내일을 바꾸는 아이디어를 찾습니다. 총 상금 1,200만원, 6월 8일 접수 시작!" />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --blue:#3b82f6;
+    --blue-deep:#2563eb;
+    --sky:#7dd3fc;
+    --mint:#5eead4;
+    --coral:#fb7185;
+    --amber:#fbbf24;
+    --ink:#1f2937;
+    --soft:#64748b;
+    --bg:#f0f7ff;
+    --card:#ffffff;
+    --line:#e2e8f0;
+    --shadow:0 10px 30px rgba(59,130,246,.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Noto Sans KR',sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{line-height:1.3;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px;}
+  .jua{font-family:'Jua',sans-serif;font-weight:400;}
+
+  /* ===== NAV ===== */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:62px;}
+  .logo{font-family:'Jua',sans-serif;font-size:19px;color:var(--blue-deep);display:flex;align-items:center;gap:8px;}
+  .logo span{font-size:24px;}
+  .nav-links{display:flex;gap:26px;align-items:center;}
+  .nav-links a{font-size:15px;color:var(--soft);font-weight:500;transition:.2s;}
+  .nav-links a:hover{color:var(--blue-deep);}
+  .nav-cta{background:var(--blue-deep);color:#fff !important;padding:9px 18px;border-radius:999px;font-weight:700;}
+  .nav-cta:hover{background:#1d4ed8;}
+  .burger{display:none;font-size:26px;background:none;border:none;cursor:pointer;color:var(--blue-deep);}
+  @media(max-width:780px){
+    .nav-links{position:absolute;top:62px;left:0;right:0;background:#fff;flex-direction:column;gap:0;padding:8px 0;border-bottom:1px solid var(--line);display:none;}
+    .nav-links.open{display:flex;}
+    .nav-links a{padding:13px 22px;width:100%;}
+    .nav-cta{margin:8px 22px;text-align:center;}
+    .burger{display:block;}
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;overflow:hidden;
+    background:linear-gradient(135deg,#dbeafe 0%,#e0f2fe 45%,#cffafe 100%);
+    padding:74px 0 86px;
+    text-align:center;
+  }
+  .blob{position:absolute;border-radius:50%;filter:blur(8px);opacity:.55;}
+  .b1{width:240px;height:240px;background:var(--sky);top:-60px;left:-50px;}
+  .b2{width:180px;height:180px;background:var(--mint);bottom:-40px;right:-30px;opacity:.5;}
+  .b3{width:120px;height:120px;background:var(--amber);top:40px;right:14%;opacity:.4;}
+  .hero .wrap{position:relative;z-index:2;}
+  .badge{
+    display:inline-block;background:#fff;color:var(--blue-deep);
+    font-weight:700;font-size:14px;padding:8px 18px;border-radius:999px;
+    box-shadow:var(--shadow);margin-bottom:22px;
+  }
+  .hero h1{font-family:'Jua',sans-serif;font-size:clamp(32px,5.4vw,56px);color:#0f3a8a;letter-spacing:-1px;}
+  .hero h1 .hl{color:var(--blue-deep);}
+  .hero .sub{font-size:clamp(16px,2.4vw,20px);color:#1e40af;margin-top:18px;font-weight:500;}
+  .hero .tagline{font-size:15px;color:#3b6fb5;margin-top:10px;}
+  .hero-btns{margin-top:34px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+  .btn{
+    display:inline-block;font-weight:700;font-size:16px;padding:15px 32px;border-radius:999px;
+    transition:.2s;cursor:pointer;border:none;
+  }
+  .btn-primary{background:var(--blue-deep);color:#fff;box-shadow:0 8px 20px rgba(37,99,235,.35);}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(37,99,235,.45);}
+  .btn-ghost{background:#fff;color:var(--blue-deep);box-shadow:var(--shadow);}
+  .btn-ghost:hover{transform:translateY(-2px);}
+
+  /* ===== D-day / quick facts ===== */
+  .facts{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
+    margin:-46px auto 0;position:relative;z-index:5;max-width:1080px;padding:0 22px;
+  }
+  .fact{
+    background:var(--card);border-radius:20px;padding:22px 16px;text-align:center;
+    box-shadow:var(--shadow);border:1px solid #eef2ff;
+  }
+  .fact .ic{font-size:28px;}
+  .fact .big{font-family:'Jua',sans-serif;font-size:22px;color:var(--blue-deep);margin-top:6px;}
+  .fact .lbl{font-size:13px;color:var(--soft);margin-top:2px;}
+  @media(max-width:780px){.facts{grid-template-columns:repeat(2,1fr);}}
+
+  /* ===== COUNTDOWN ===== */
+  .countdown{max-width:1080px;margin:28px auto 0;padding:0 22px;}
+  .cd-card{
+    background:linear-gradient(135deg,#2563eb,#3b82f6);color:#fff;
+    border-radius:22px;padding:26px 22px;text-align:center;
+    box-shadow:0 12px 30px rgba(37,99,235,.3);
+  }
+  .cd-card .cd-label{font-size:15px;font-weight:500;color:#dbeafe;}
+  .cd-card .cd-label b{color:#fff;font-weight:700;}
+  .cd-timer{display:flex;justify-content:center;gap:14px;margin-top:14px;flex-wrap:wrap;}
+  .cd-unit{background:rgba(255,255,255,.16);border-radius:14px;padding:12px 4px;min-width:78px;}
+  .cd-unit .num{font-family:'Jua',sans-serif;font-size:34px;line-height:1;}
+  .cd-unit .u{font-size:12px;color:#dbeafe;margin-top:6px;}
+  .cd-closed{font-family:'Jua',sans-serif;font-size:22px;}
+  @media(max-width:780px){.cd-unit{min-width:64px;}.cd-unit .num{font-size:28px;}}
+
+  /* ===== SECTION base ===== */
+  section.block{padding:64px 0;}
+  .sec-head{text-align:center;margin-bottom:42px;}
+  .sec-head .kicker{color:var(--blue);font-weight:700;font-size:14px;letter-spacing:1px;}
+  .sec-head h2{font-family:'Jua',sans-serif;font-size:clamp(26px,4vw,38px);color:#0f3a8a;margin-top:6px;}
+  .sec-head p{color:var(--soft);margin-top:10px;font-size:16px;}
+
+  /* overview cards */
+  .ov-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .ov{background:var(--card);border-radius:18px;padding:26px;box-shadow:var(--shadow);border:1px solid #eef2ff;transition:.2s;}
+  .ov:hover{transform:translateY(-4px);}
+  .ov .ic{font-size:32px;}
+  .ov h3{font-size:18px;margin:12px 0 6px;color:#0f3a8a;}
+  .ov p{color:var(--soft);font-size:15px;}
+  .ov strong{color:var(--ink);}
+  @media(max-width:780px){.ov-grid{grid-template-columns:1fr;}}
+
+  /* prize */
+  .prize-wrap{background:linear-gradient(135deg,#eff6ff,#ecfeff);}
+  .prizes{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:end;}
+  .prize{background:#fff;border-radius:18px;padding:28px 18px;text-align:center;box-shadow:var(--shadow);border:1px solid #eef2ff;}
+  .prize .medal{font-size:42px;}
+  .prize .rank{font-family:'Jua',sans-serif;font-size:20px;margin-top:8px;color:#0f3a8a;}
+  .prize .amt{font-size:26px;font-weight:900;color:var(--blue-deep);margin-top:4px;}
+  .prize .cnt{font-size:13px;color:var(--soft);margin-top:2px;}
+  .prize.top{transform:scale(1.06);border:2px solid var(--amber);}
+  @media(max-width:780px){.prizes{grid-template-columns:1fr;}.prize.top{transform:none;}}
+
+  /* timeline */
+  .timeline{position:relative;max-width:760px;margin:0 auto;padding-left:30px;}
+  .timeline::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:3px;background:linear-gradient(var(--sky),var(--mint));border-radius:3px;}
+  .tl{position:relative;margin-bottom:26px;}
+  .tl::before{content:"";position:absolute;left:-30px;top:4px;width:18px;height:18px;border-radius:50%;background:var(--blue);border:4px solid #fff;box-shadow:0 0 0 2px var(--sky);}
+  .tl .date{font-weight:700;color:var(--blue-deep);font-size:15px;}
+  .tl .what{color:var(--ink);font-size:16px;}
+  .tl .note{color:var(--soft);font-size:13px;}
+
+  /* tasks */
+  .tasks{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+  .task{background:var(--card);border-radius:20px;overflow:hidden;box-shadow:var(--shadow);border:1px solid #eef2ff;display:flex;flex-direction:column;}
+  .task .top{padding:20px 22px;color:#fff;display:flex;align-items:center;gap:14px;}
+  .t1 .top{background:linear-gradient(135deg,#3b82f6,#60a5fa);}
+  .t2 .top{background:linear-gradient(135deg,#f43f5e,#fb7185);}
+  .t3 .top{background:linear-gradient(135deg,#10b981,#34d399);}
+  .t4 .top{background:linear-gradient(135deg,#f59e0b,#fbbf24);}
+  .task .top .num{font-family:'Jua',sans-serif;font-size:34px;opacity:.85;}
+  .task .top .theme{font-size:13px;background:rgba(255,255,255,.25);padding:3px 10px;border-radius:999px;display:inline-block;}
+  .task .top h3{font-size:17px;margin-top:4px;}
+  .task .body{padding:20px 22px;}
+  .task .body h4{font-size:13px;color:var(--blue-deep);font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:6px;}
+  .task .body p{font-size:14px;color:var(--soft);margin-bottom:14px;}
+  .task .data-tags{display:flex;flex-wrap:wrap;gap:6px;}
+  .data-tags span{font-size:12px;background:#eef4ff;color:#3b6fb5;padding:4px 10px;border-radius:8px;}
+  @media(max-width:780px){.tasks{grid-template-columns:1fr;}}
+
+  /* judging */
+  .judge-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .judge-card{background:var(--card);border-radius:20px;padding:26px;box-shadow:var(--shadow);border:1px solid #eef2ff;}
+  .judge-card h3{font-family:'Jua',sans-serif;font-size:20px;color:#0f3a8a;margin-bottom:6px;}
+  .judge-card .stage{font-size:13px;color:var(--soft);margin-bottom:18px;}
+  .crit{margin-bottom:14px;}
+  .crit .crit-top{display:flex;justify-content:space-between;font-size:14px;font-weight:600;margin-bottom:5px;}
+  .crit .crit-top span:last-child{color:var(--blue-deep);}
+  .bar{height:9px;background:#eef2ff;border-radius:999px;overflow:hidden;}
+  .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--blue),var(--mint));border-radius:999px;}
+  @media(max-width:780px){.judge-grid{grid-template-columns:1fr;}}
+
+  /* apply */
+  .apply-wrap{background:linear-gradient(135deg,#1e3a8a,#2563eb);color:#fff;}
+  .apply-wrap .sec-head h2{color:#fff;}
+  .apply-wrap .sec-head p{color:#cfe0ff;}
+  .apply-wrap .sec-head .kicker{color:#a7c7ff;}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:34px;}
+  .step{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:18px;padding:24px;backdrop-filter:blur(4px);}
+  .step .n{font-family:'Jua',sans-serif;font-size:30px;color:var(--sky);}
+  .step h3{font-size:17px;margin:6px 0;}
+  .step p{font-size:14px;color:#dbe7ff;}
+  .step a{color:#fff;text-decoration:underline;font-weight:600;}
+  @media(max-width:780px){.steps{grid-template-columns:1fr;}}
+  .apply-cta{text-align:center;}
+  .apply-note{font-size:13px;color:#bcd2ff;margin-top:16px;}
+
+  /* faq */
+  .faq{max-width:780px;margin:0 auto;}
+  .qa{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-bottom:12px;overflow:hidden;}
+  .qa summary{cursor:pointer;padding:18px 22px;font-weight:700;font-size:16px;color:#0f3a8a;list-style:none;display:flex;justify-content:space-between;align-items:center;}
+  .qa summary::-webkit-details-marker{display:none;}
+  .qa summary::after{content:"+";font-size:24px;color:var(--blue);transition:.2s;}
+  .qa[open] summary::after{transform:rotate(45deg);}
+  .qa .ans{padding:0 22px 20px;color:var(--soft);font-size:15px;}
+
+  /* footer */
+  footer{background:#0f1f3a;color:#cbd5e1;padding:40px 0 30px;text-align:center;}
+  footer .f-logo{font-family:'Jua',sans-serif;font-size:20px;color:#fff;margin-bottom:8px;}
+  footer p{font-size:14px;margin:3px 0;}
+  footer .small{font-size:12px;color:#64748b;margin-top:16px;}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="wrap nav-in">
+    <a href="#top" class="logo"><span>📊</span> 천안시 데이터 경진대회</a>
+    <button class="burger" onclick="document.getElementById('navlinks').classList.toggle('open')">☰</button>
+    <div class="nav-links" id="navlinks">
+      <a href="#overview">대회 개요</a>
+      <a href="#prize">시상 내역</a>
+      <a href="#schedule">일정</a>
+      <a href="#tasks">지정과제</a>
+      <a href="#judge">심사 기준</a>
+      <a href="#apply" class="nav-cta">신청하기</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+  <div class="wrap">
+    <div class="badge">🎉 2026 천안시 빅데이터 플랫폼 사업</div>
+    <h1>데이터로 <span class="hl">천안의 내일</span>을<br/>바꾸는 아이디어를 찾습니다</h1>
+    <p class="sub">2026년 천안시 데이터 분석 아이디어 경진대회</p>
+    <p class="tagline">대한민국 국민 누구나 · 개인 또는 1~4인 팀 · 총 상금 1,200만원</p>
+    <div class="hero-btns">
+      <a href="#apply" class="btn btn-primary">지금 신청하기 →</a>
+      <a href="#tasks" class="btn btn-ghost">지정과제 살펴보기</a>
+    </div>
+  </div>
+</header>
+
+<!-- QUICK FACTS -->
+<div class="facts">
+  <div class="fact"><div class="ic">🗓️</div><div class="big">6/8~8/31</div><div class="lbl">공모 접수 기간</div></div>
+  <div class="fact"><div class="ic">👥</div><div class="big">1~4인</div><div class="lbl">개인·팀 참가</div></div>
+  <div class="fact"><div class="ic">🏆</div><div class="big">5팀</div><div class="lbl">수상 (대상~우수상)</div></div>
+  <div class="fact"><div class="ic">💰</div><div class="big">1,200만원</div><div class="lbl">총 상금</div></div>
+</div>
+
+<!-- COUNTDOWN -->
+<div class="countdown">
+  <div class="cd-card" id="cdCard">
+    <div class="cd-label">⏰ <b>접수 마감(8월 31일)</b>까지 남은 시간</div>
+    <div class="cd-timer" id="cdTimer">
+      <div class="cd-unit"><div class="num" id="cdD">--</div><div class="u">일</div></div>
+      <div class="cd-unit"><div class="num" id="cdH">--</div><div class="u">시간</div></div>
+      <div class="cd-unit"><div class="num" id="cdM">--</div><div class="u">분</div></div>
+      <div class="cd-unit"><div class="num" id="cdS">--</div><div class="u">초</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- OVERVIEW -->
+<section class="block" id="overview">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">ABOUT</div>
+      <h2>대회 개요</h2>
+      <p>데이터 기반의 창의적인 아이디어를 발굴하고, 빅데이터 활용 문화를 함께 넓혀가는 자리입니다.</p>
+    </div>
+    <div class="ov-grid">
+      <div class="ov">
+        <div class="ic">🎯</div>
+        <h3>응모 자격</h3>
+        <p><strong>대한민국 국민 누구나</strong> 참여할 수 있어요. 개인 또는 1인 이상 4인 이내의 팀으로 신청 가능합니다.</p>
+      </div>
+      <div class="ov">
+        <div class="ic">🧩</div>
+        <h3>응모 분야</h3>
+        <p><strong>AI 모델 개발</strong> — 데이터를 활용한 예측·분류·추천 등 알고리즘 솔루션 제안<br/><br/><strong>데이터 분석</strong> — 데이터 탐색·분석·시각화로 정책·시민 편익 인사이트 도출</p>
+      </div>
+      <div class="ov">
+        <div class="ic">💡</div>
+        <h3>이런 아이디어를 찾아요</h3>
+        <p>천안시 행정 개선, 시민 불편 해소, 기존 정책에 반영 가능한 참신한 제안. 공공데이터와 민간데이터를 자유롭게 활용하세요.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRIZE -->
+<section class="block prize-wrap" id="prize">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">PRIZE</div>
+      <h2>시상 내역</h2>
+      <p>총 5팀을 선정해 상금과 함께 수상합니다.</p>
+    </div>
+    <div class="prizes">
+      <div class="prize">
+        <div class="medal">🥈</div>
+        <div class="rank">최우수상</div>
+        <div class="amt">200만원</div>
+        <div class="cnt">1팀</div>
+      </div>
+      <div class="prize top">
+        <div class="medal">🥇</div>
+        <div class="rank">대상</div>
+        <div class="amt">500만원</div>
+        <div class="cnt">1팀</div>
+      </div>
+      <div class="prize">
+        <div class="medal">🥉</div>
+        <div class="rank">우수상</div>
+        <div class="amt">100만원</div>
+        <div class="cnt">3팀</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section class="block" id="schedule">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">SCHEDULE</div>
+      <h2>추진 일정</h2>
+      <p>2026년 6월 8일부터 10월 16일까지, 131일간 진행됩니다.</p>
+    </div>
+    <div class="timeline">
+      <div class="tl"><div class="date">6월 8일 ~ 8월 31일</div><div class="what">📥 공모 접수</div><div class="note">신청서·아이디어 제출</div></div>
+      <div class="tl"><div class="date">9월 중</div><div class="what">📝 1차 심사 (서면)</div><div class="note">접수작 대상 서류 심사</div></div>
+      <div class="tl"><div class="date">10월 중</div><div class="what">🎤 2차 심사 (발표)</div><div class="note">상위 10팀 오프라인 PT 발표</div></div>
+      <div class="tl"><div class="date">10월 말 (추후 공지)</div><div class="what">🏆 시상식</div><div class="note">입상팀 대상 오프라인 진행</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TASKS -->
+<section class="block" id="tasks" style="background:linear-gradient(180deg,#f0f7ff,#e8f3ff);">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">CHALLENGES</div>
+      <h2>천안시 지정과제 4선</h2>
+      <p>아래 4개 테마 중 하나를 골라 도전하세요. (예시 데이터는 참고용이며 자유롭게 확장 가능합니다.)</p>
+    </div>
+    <div class="tasks">
+
+      <div class="task t1">
+        <div class="top"><div class="num">01</div><div><span class="theme">국토 / 교통</span><h3>교통혼잡 완화 & 스마트 교통체계</h3></div></div>
+        <div class="body">
+          <h4>🔍 배경</h4>
+          <p>수도권 접근성과 산업단지 밀집으로 출퇴근 교통혼잡이 심화. 대중교통 효율 개선과 스마트 교통관리가 필요합니다.</p>
+          <h4>📦 활용 가능 데이터(예시)</h4>
+          <div class="data-tags"><span>교통카드 이용내역</span><span>택시 운행정보</span><span>이륜차 데이터</span><span>수요응답형 모빌리티</span><span>교통사고·위험지수</span><span>신호체계 운영</span></div>
+        </div>
+      </div>
+
+      <div class="task t2">
+        <div class="top"><div class="num">02</div><div><span class="theme">보건 / 의료</span><h3>시민 건강관리 & 의료서비스 효율화</h3></div></div>
+        <div class="body">
+          <h4>🔍 배경</h4>
+          <p>고령화·만성질환 증가로 의료 수요가 늘고 있어, 예방 중심 건강관리와 의료자원 효율화가 중요합니다.</p>
+          <h4>📦 활용 가능 데이터(예시)</h4>
+          <div class="data-tags"><span>감염병 관리</span><span>지역 보건의료</span><span>공공의료 EMR</span><span>치매 검진</span><span>정신건강 상담</span><span>치료기간·비용</span><span>병원별 수가</span></div>
+        </div>
+      </div>
+
+      <div class="task t3">
+        <div class="top"><div class="num">03</div><div><span class="theme">지역균형발전</span><h3>지역 간 격차 해소 & 균형발전</h3></div></div>
+        <div class="body">
+          <h4>🔍 배경</h4>
+          <p>구도심과 신도심 간 인프라·경제·인구 격차가 존재. 데이터 기반 균형발전 정책이 필요합니다.</p>
+          <h4>📦 활용 가능 데이터(예시)</h4>
+          <div class="data-tags"><span>전국 빈집</span><span>지역화폐 발행·소비</span><span>업종별 인허가</span><span>생활편의시설</span></div>
+        </div>
+      </div>
+
+      <div class="task t4">
+        <div class="top"><div class="num">04</div><div><span class="theme">농림 / 축산</span><h3>스마트 농업 & 축산 생산성 향상</h3></div></div>
+        <div class="body">
+          <h4>🔍 배경</h4>
+          <p>농업 인구 감소·고령화로 생산성 저하 문제가 발생. 데이터 기반 스마트 농업 전환이 필요합니다.</p>
+          <h4>📦 활용 가능 데이터(예시)</h4>
+          <div class="data-tags"><span>스마트팜 환경·작황</span><span>병해충 진단</span><span>농업 위성영상</span><span>스마트 축산</span><span>농산물 유통</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- JUDGE -->
+<section class="block" id="judge">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">EVALUATION</div>
+      <h2>심사 기준</h2>
+      <p>2단계 심사로 진행됩니다. 예선(서면) → 본선(발표).</p>
+    </div>
+    <div class="judge-grid">
+      <div class="judge-card">
+        <h3>예선 · 서류 심사</h3>
+        <div class="stage">데이터 실무자·빅데이터 전문가로 구성된 평가위원 심사</div>
+        <div class="crit"><div class="crit-top"><span>주제 적합성</span><span>20점</span></div><div class="bar"><i style="width:100%"></i></div></div>
+        <div class="crit"><div class="crit-top"><span>창의성</span><span>20점</span></div><div class="bar"><i style="width:100%"></i></div></div>
+        <div class="crit"><div class="crit-top"><span>아이디어 기획력</span><span>20점</span></div><div class="bar"><i style="width:100%"></i></div></div>
+        <div class="crit"><div class="crit-top"><span>활용 가능성</span><span>15점</span></div><div class="bar"><i style="width:75%"></i></div></div>
+        <div class="crit"><div class="crit-top"><span>노력</span><span>15점</span></div><div class="bar"><i style="width:75%"></i></div></div>
+        <div class="crit"><div class="crit-top"><span>데이터 이해·분석 적정성</span><span>10점</span></div><div class="bar"><i style="width:50%"></i></div></div>
+      </div>
+      <div class="judge-card">
+        <h3>본선 · 발표 심사</h3>
+        <div class="stage">예선 상위 10팀(2배수) 오프라인 PT, 팀당 10분 발표</div>
+        <div class="crit"><div class="crit-top"><span>논리성 및 타당성</span><span>30점</span></div><div class="bar"><i style="width:100%"></i></div></div>
+        <div class="crit"><div class="crit-top"><span>발표 전달력</span><span>30점</span></div><div class="bar"><i style="width:100%"></i></div></div>
+        <div class="crit"><div class="crit-top"><span>주제 적합성</span><span>20점</span></div><div class="bar"><i style="width:66%"></i></div></div>
+        <div class="crit"><div class="crit-top"><span>창의성</span><span>20점</span></div><div class="bar"><i style="width:66%"></i></div></div>
+        <p style="font-size:13px;color:var(--soft);margin-top:18px;">심사위원 평균 종합 점수로 대상·최우수상·우수상을 차등 시상합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPLY -->
+<section class="block apply-wrap" id="apply">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">HOW TO APPLY</div>
+      <h2>참가 신청 방법</h2>
+      <p>아래 3단계로 간편하게 신청하세요. 신청서·동의서·서약서를 함께 제출합니다.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="n">01</div>
+        <h3>📄 신청 서류 내려받기</h3>
+        <p>신청서, 개인정보 수집·이용 동의서, 서약서가 포함된 양식을 다운로드해 작성하세요.<br/><br/><a href="(양식)2026년 천안시 AI·데이터 기반 정책 아이디어 경진대회_참가신청 서류(신청서, 동의서, 서약서).hwp" download>양식 다운로드 (HWP) ↓</a></p>
+      </div>
+      <div class="step">
+        <div class="n">02</div>
+        <h3>✍️ 아이디어 준비</h3>
+        <p>지정과제 중 하나를 선택하고, 데이터 분석·AI 모델 아이디어 제안서를 함께 준비합니다.</p>
+      </div>
+      <div class="step">
+        <div class="n">03</div>
+        <h3>📤 온라인 제출</h3>
+        <p>작성한 서류와 제안서 파일을 아래 신청 폼에 업로드하면 접수 완료!</p>
+      </div>
+    </div>
+    <div class="apply-cta">
+      <a href="#" id="applyBtn" class="btn btn-ghost" target="_blank" rel="noopener">📝 온라인 신청 폼 열기</a>
+      <p class="apply-note">
+        ※ 파일(신청서·동의서·서약서·제안서) 제출은 <strong>구글 폼</strong> 등 온라인 신청 폼으로 받는 방식을 권장합니다.<br/>
+        폼 주소가 준비되면 위 버튼에 연결하거나, 이메일 접수(<a href="mailto:data@kodatasolution.co.kr" style="color:#fff;text-decoration:underline;">data@kodatasolution.co.kr</a>)로 안내할 수 있어요.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="block" id="faq">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">FAQ</div>
+      <h2>자주 묻는 질문</h2>
+    </div>
+    <div class="faq">
+      <details class="qa"><summary>누구나 참가할 수 있나요?</summary><div class="ans">네, 대한민국 국민이라면 누구나 참가할 수 있습니다. 개인 또는 1인 이상 4인 이내의 팀으로 신청 가능합니다.</div></details>
+      <details class="qa"><summary>지정과제 외의 주제로도 제출할 수 있나요?</summary><div class="ans">대회는 천안시 지정과제 4개(교통·의료·균형발전·농림축산)를 중심으로 운영됩니다. 천안시 행정 개선과 시민 편익에 기여하는 아이디어를 권장합니다. 자세한 응모 범위는 접수처 안내를 확인하세요.</div></details>
+      <details class="qa"><summary>어떤 데이터를 사용해야 하나요?</summary><div class="ans">공공데이터와 수집 가능한 각종 민간데이터를 자유롭게 활용할 수 있습니다. 각 지정과제의 '활용 가능 데이터(예시)'는 참고용이며, 다른 데이터도 사용 가능합니다.</div></details>
+      <details class="qa"><summary>제출해야 하는 서류는 무엇인가요?</summary><div class="ans">참가신청서, 개인정보 수집·이용 동의서, 서약서가 기본이며, 아이디어 제안서를 함께 제출합니다. 양식은 '참가 신청 방법' 섹션에서 내려받을 수 있습니다.</div></details>
+      <details class="qa"><summary>심사는 어떻게 진행되나요?</summary><div class="ans">예선(서면 심사)으로 상위 10팀을 선발하고, 본선(오프라인 발표 심사)에서 팀당 10분 발표를 진행합니다. 최종 5팀을 대상·최우수상·우수상으로 시상합니다.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="f-logo">📊 2026 천안시 데이터 분석 아이디어 경진대회</div>
+    <p>주관 : 천안시청 &nbsp;|&nbsp; 운영 : 코데이터솔루션(주)</p>
+    <p>문의 : data@kodatasolution.co.kr</p>
+    <p class="small">본 페이지는 「2026년 천안시 빅데이터 플랫폼 유지관리 및 분석사업」 경진대회 추진계획서를 기반으로 제작되었습니다. · 일정 및 세부 내용은 추후 변경될 수 있습니다.</p>
+  </div>
+</footer>
+
+<script>
+  // 신청 폼 URL이 준비되면 아래 값을 실제 구글폼/타이폼 주소로 바꾸세요.
+  var APPLY_FORM_URL = ""; // 예: "https://forms.gle/xxxxxxxx"
+  // 접수 마감: 2026년 8월 31일 23:59:59 (한국시간 KST)
+  (function(){
+    var deadline = new Date('2026-08-31T23:59:59+09:00').getTime();
+    var elD=document.getElementById('cdD'), elH=document.getElementById('cdH'),
+        elM=document.getElementById('cdM'), elS=document.getElementById('cdS');
+    function pad(n){return n<10?'0'+n:''+n;}
+    function tick(){
+      var diff = deadline - Date.now();
+      if(diff<=0){
+        document.getElementById('cdCard').innerHTML =
+          '<div class="cd-closed">🔔 접수가 마감되었습니다. 많은 관심 감사합니다!</div>';
+        clearInterval(timer);
+        return;
+      }
+      var s=Math.floor(diff/1000);
+      elD.textContent = Math.floor(s/86400);
+      elH.textContent = pad(Math.floor(s%86400/3600));
+      elM.textContent = pad(Math.floor(s%3600/60));
+      elS.textContent = pad(s%60);
+    }
+    tick();
+    var timer = setInterval(tick, 1000);
+  })();
+
+  (function(){
+    var btn = document.getElementById('applyBtn');
+    if(APPLY_FORM_URL){
+      btn.href = APPLY_FORM_URL;
+    } else {
+      btn.addEventListener('click', function(e){
+        e.preventDefault();
+        alert('온라인 신청 폼 주소가 아직 등록되지 않았습니다.\n\n관리자: index.html 하단 script의 APPLY_FORM_URL 값에 구글 폼 주소를 입력하면 자동으로 연결됩니다.');
+      });
+    }
+    // close mobile menu on link click
+    document.querySelectorAll('#navlinks a').forEach(function(a){
+      a.addEventListener('click', function(){ document.getElementById('navlinks').classList.remove('open'); });
+    });
+  })();
+</script>
+</body>
+</html>

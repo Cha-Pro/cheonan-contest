@@ -223,6 +223,26 @@
   footer .f-logo{font-family:'Jua',sans-serif;font-size:20px;color:#fff;margin-bottom:8px;}
   footer p{font-size:14px;margin:3px 0;}
   footer .small{font-size:12px;color:#64748b;margin-top:16px;}
+
+  /* data sources */
+  .data-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:24px;align-items:start;}
+  .data-card{background:var(--card);border-radius:20px;padding:28px;box-shadow:var(--shadow);border:1px solid #eef2ff;}
+  .data-card h3{font-family:'Jua',sans-serif;font-size:20px;color:#0f3a8a;margin-bottom:6px;}
+  .data-card .stage{font-size:13px;color:var(--soft);margin-bottom:18px;}
+  .data-links{list-style:none;}
+  .data-links li{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px dashed var(--line);font-size:15px;}
+  .data-links li:last-child{border-bottom:none;}
+  .data-links li .dot{color:var(--blue);font-weight:700;}
+  .data-links li a{color:var(--blue-deep);text-decoration:none;font-weight:500;word-break:break-all;}
+  .data-links li a:hover{text-decoration:underline;}
+  .data-links li.etc{color:var(--soft);font-size:14px;}
+  .rules{list-style:none;}
+  .rules li{position:relative;padding:10px 0 10px 24px;font-size:15px;color:var(--ink);border-bottom:1px dashed var(--line);}
+  .rules li:last-child{border-bottom:none;}
+  .rules li::before{content:"✓";position:absolute;left:0;top:10px;color:var(--mint);font-weight:700;}
+  .rules li.warn{color:var(--coral);font-weight:600;}
+  .rules li.warn::before{content:"※";color:var(--coral);}
+  @media(max-width:780px){.data-grid{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
@@ -237,6 +257,7 @@
       <a href="#prize">시상 내역</a>
       <a href="#schedule">일정</a>
       <a href="#tasks">지정과제</a>
+      <a href="#data">활용 데이터</a>
       <a href="#judge">심사 기준</a>
       <a href="#apply" class="nav-cta">신청하기</a>
     </div>
@@ -405,6 +426,43 @@
         </div>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- DATA SOURCES -->
+<section class="block" id="data" style="background:linear-gradient(180deg,#ffffff,#f0f7ff);">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">DATA</div>
+      <h2>활용 데이터</h2>
+      <p>아래 공공 포털 등에서 합법적으로 수집한 데이터를 활용하세요.</p>
+    </div>
+    <div class="data-grid">
+      <div class="data-card">
+        <h3>📂 활용 데이터 예시</h3>
+        <div class="stage">대표적인 공공데이터 제공처입니다. 이 외의 데이터도 활용 가능합니다.</div>
+        <ul class="data-links">
+          <li><span class="dot">•</span> 공공데이터포털 <a href="https://www.data.go.kr/" target="_blank" rel="noopener">data.go.kr</a></li>
+          <li><span class="dot">•</span> 원윈도우 <a href="https://www.data1window.kr/" target="_blank" rel="noopener">data1window.kr</a></li>
+          <li><span class="dot">•</span> 충남데이터포털 올담 <a href="https://alldam.chungnam.go.kr/" target="_blank" rel="noopener">alldam.chungnam.go.kr</a></li>
+          <li><span class="dot">•</span> 천안시청 <a href="https://www.cheonan.go.kr/" target="_blank" rel="noopener">cheonan.go.kr</a></li>
+          <li><span class="dot">•</span> 국가통계포털 <a href="https://kosis.kr/" target="_blank" rel="noopener">kosis.kr</a></li>
+          <li><span class="dot">•</span> 통계청 마이크로데이터 <a href="https://mdis.kostat.go.kr/" target="_blank" rel="noopener">mdis.kostat.go.kr</a></li>
+          <li><span class="dot">•</span> 지방재정365 <a href="https://www.lofin365.go.kr/" target="_blank" rel="noopener">lofin365.go.kr</a></li>
+          <li class="etc">그 외 데이터 활용 시 출처 및 합법성 입증 필요</li>
+        </ul>
+      </div>
+      <div class="data-card">
+        <h3>📌 데이터 활용 기준</h3>
+        <div class="stage">아래 기준을 반드시 준수해 주세요.</div>
+        <ul class="rules">
+          <li>정식 API 또는 공공 포털 등을 통해 합법적으로 수집한 데이터만 허용</li>
+          <li>수집 시점, 범위, 주요 컬럼(변수) 등 기술 필수</li>
+          <li class="warn">제안서 내 활용 데이터 명확히 명시, 출처(URL 포함) 반드시 기재</li>
+          <li class="warn">제3자의 라이선스를 침해하거나 상업적 목적의 민간 데이터 무단 사용은 엄격히 금지됨</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>

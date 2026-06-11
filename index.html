@@ -251,6 +251,18 @@
   .rules li.warn{color:var(--coral);font-weight:600;}
   .rules li.warn::before{content:"※";color:var(--coral);}
   @media(max-width:780px){.data-grid{grid-template-columns:1fr;}}
+
+  /* 게시처 링크 */
+  .post-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
+  .post-link{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+    background:var(--card);border:1px solid #eef2ff;border-radius:16px;padding:22px 12px;text-align:center;
+    box-shadow:var(--shadow);transition:.2s;color:var(--ink);}
+  .post-link:hover{transform:translateY(-4px);border-color:var(--sky);}
+  .post-link .pic{font-size:26px;}
+  .post-link .pname{font-weight:700;font-size:15px;color:#0f3a8a;}
+  .post-link .pgo{font-size:12px;color:var(--blue);}
+  @media(max-width:900px){.post-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:480px){.post-grid{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
@@ -262,6 +274,7 @@
     <button class="burger" onclick="document.getElementById('navlinks').classList.toggle('open')">☰</button>
     <div class="nav-links" id="navlinks">
       <a href="#overview">대회 개요</a>
+      <a href="#posts">게시처</a>
       <a href="#prize">시상 내역</a>
       <a href="#schedule">일정</a>
       <a href="#tasks">지정과제</a>
@@ -332,6 +345,34 @@
         <h3>이런 아이디어를 찾아요</h3>
         <p>천안시 행정 개선, 시민 불편 해소, 기존 정책에 반영 가능한 참신한 제안. 공공데이터와 민간데이터를 자유롭게 활용하세요.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- 게시처 -->
+<section class="block" id="posts" style="background:linear-gradient(135deg,#eef6ff,#e6fbff);">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">NOTICE</div>
+      <h2>📣 공모전 게시처</h2>
+      <p>아래 공모 사이트에서도 본 대회 안내를 확인하고 공유하실 수 있습니다.</p>
+    </div>
+    <div class="post-grid">
+      <a class="post-link" href="https://www.thinkcontest.com/thinkgood/user/contest/view.do?querystr=gpgXCwaRVhgtV7RtsEujJaG7nr3plTwpC_t039BEeaU" target="_blank" rel="noopener">
+        <span class="pic">📣</span><span class="pname">씽굿</span><span class="pgo">바로가기 →</span>
+      </a>
+      <a class="post-link" href="https://www.wevity.com/?c=find&s=1&sp=contents&sw=%EC%B2%9C%EC%95%88%EC%8B%9C&gbn=viewok&gp=1&ix=108102" target="_blank" rel="noopener">
+        <span class="pic">📣</span><span class="pname">위비티</span><span class="pgo">바로가기 →</span>
+      </a>
+      <a class="post-link" href="https://www.all-con.co.kr/view/contest/538413?page=1&sortname=cl_order&sortorder=asc&stx=%EC%B2%9C%EC%95%88%EC%8B%9C" target="_blank" rel="noopener">
+        <span class="pic">📣</span><span class="pname">올콘</span><span class="pgo">바로가기 →</span>
+      </a>
+      <a class="post-link" href="https://thinkyou.co.kr/contest/63927" target="_blank" rel="noopener">
+        <span class="pic">📣</span><span class="pname">씽유</span><span class="pgo">바로가기 →</span>
+      </a>
+      <a class="post-link" href="https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202606090019" target="_blank" rel="noopener">
+        <span class="pic">📣</span><span class="pname">콘테스트코리아</span><span class="pgo">바로가기 →</span>
+      </a>
     </div>
   </div>
 </section>
